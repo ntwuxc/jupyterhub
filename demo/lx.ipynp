@@ -1,0 +1,111 @@
+Jupyter Notebook
+Lorenz.ipynb
+2018年5月8日
+Plain Text
+File
+Edit
+View
+Language
+
+1
+{
+2
+ "cells": [
+3
+  {
+4
+   "cell_type": "markdown",
+5
+   "metadata": {},
+6
+   "source": [
+7
+    "# The Lorenz Differential Equations"
+8
+   ]
+9
+  },
+10
+  {
+11
+   "cell_type": "markdown",
+12
+   "metadata": {},
+13
+   "source": [
+14
+    "Before we start, we import some preliminary libraries. We will also import (below) the accompanying `lorenz.py` file, which contains the actual solver and plotting routine."
+15
+   ]
+16
+  },
+17
+  {
+18
+   "cell_type": "code",
+19
+   "execution_count": null,
+20
+   "metadata": {},
+21
+   "outputs": [],
+22
+   "source": [
+23
+    "%matplotlib inline\n",
+24
+    "from ipywidgets import interactive, fixed"
+25
+   ]
+26
+  },
+27
+  {
+28
+   "cell_type": "markdown",
+29
+   "metadata": {},
+30
+   "source": [
+31
+    "We explore the Lorenz system of differential equations:\n",
+32
+    "\n",
+33
+    "$$\n",
+34
+    "\\begin{aligned}\n",
+35
+    "\\dot{x} & = \\sigma(y-x) \\\\\n",
+36
+    "\\dot{y} & = \\rho x - y - xz \\\\\n",
+37
+    "\\dot{z} & = -\\beta z + xy\n",
+38
+    "\\end{aligned}\n",
+39
+    "$$\n",
+40
+    "\n",
+41
+    "Let's change (\\\\(\\sigma\\\\), \\\\(\\beta\\\\), \\\\(\\rho\\\\)) with ipywidgets and examine the trajectories."
+42
+   ]
+43
+  },
+44
+  {
+45
+   "cell_type": "code",
+46
+   "execution_count": null,
+47
+   "metadata": {},
+48
+   "outputs": [],
+49
+   "source": [
+50
+    "from lorenz import solve_lorenz\n",
+51
+    "w=interactive(solve_lorenz,sigma=(0.0,50.0),rho=(0.0,50.0))\n",
